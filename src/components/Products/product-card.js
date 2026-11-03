@@ -49,12 +49,10 @@ const getProducts = async () => {
       ${Image}
         <h3 class="product-card__name">${product.name}</h3>
         <span class="product-card__desc">${product.description}</span>
-        <span class="product-card__price">${product.price}</span>
-        <span class="product-card__price--discount">
-        ${product.discount_price}
+        <span class="product-card__price">Цена: ${product.price}</span>
+        <span class="product-card__price--discount">Цена со скидкой: ${product.discount_price}
         </span>
-        <span class="product-card__quantity">
-        ${product.quantity}
+        <span class="product-card__quantity">В наличии: ${product.quantity}
         </span>
  </article>
  </li>
