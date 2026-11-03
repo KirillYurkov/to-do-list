@@ -55,7 +55,7 @@ const images = {
     'sandisk-128.webp': 'usb+flash'
 };
 
-const dir = path.join(process.cwd(), 'public', 'assets', 'images', 'products');
+const dir = path.join(process.cwd(), 'public','products');
 
 if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
