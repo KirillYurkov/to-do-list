@@ -2,9 +2,12 @@
 import { defineConfig } from "astro/config";
 import { fileURLToPath } from "node:url";
 
+import alpinejs from "@astrojs/alpinejs";
+
 // https://astro.build/config
 export default defineConfig({
   site: "http://kirilltest1984online.ru",
+
   vite: {
     css: {
       preprocessorOptions: {
@@ -15,4 +18,6 @@ export default defineConfig({
       },
     },
   },
+
+  integrations: [alpinejs()],
 });

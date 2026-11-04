@@ -3,12 +3,76 @@ import "./_product-card.scss";
 import "./_products.scss";
 ---
 
-<section class="products">
-  <h2>Products section</h2>
+<section
+  class="products"
+  x-data="{products:[],currentCategory:0}"
+  x-init="fetch('http://kirilltest1984online.ru/shop/get-products.php')
+  .then(response=>response.json())
+  .then(data=>products=data)"
+>
+  <h2 class="products__title">Products section</h2>
+  <nav class="products-nav">
+    <button
+      @click="currentCategory=0"
+      class="products-nav__btn"
+      x-bind:class="{'products-nav__btn--active':currentCategory===0}"
+      >Все</button
+    >
+    <button
+      @click="currentCategory=1"
+      class="products-nav__btn"
+      x-bind:class="{'products-nav__btn--active':currentCategory===1}"
+      >Электроника</button
+    >
+    <button
+      @click="currentCategory=2"
+      class="products-nav__btn"
+      x-bind:class="{'products-nav__btn--active':currentCategory===2}"
+      >Одежда</button
+    >
+    <button
+      @click="currentCategory=3"
+      class="products-nav__btn"
+      x-bind:class="{'products-nav__btn--active':currentCategory===3}"
+      >Бытовая техника</button
+    >
+    <button
+      @click="currentCategory=4"
+      class="products-nav__btn"
+      x-bind:class="{'products-nav__btn--active':currentCategory===4}"
+      >Аксессуары</button
+    >
+  </nav>
   <ul class="products__list">
-
+    <template x-for="product in products.filter(p => currentCategory===0 || p.category_id === currentCategory)" x-bind:key="product.id">
+      <li class="product-card__item">
+        <article class="product-card">
+          <img
+            class="product-card__img"
+            x-bind:alt="`${product.name}`"
+            x-bind:src="`/products/${product.image_url}`"
+            loading="lazy"
+            decoding="async"
+            width="300"
+          />
+          <h3 class="product-card__name" x-text="product.name"></h3>
+          <span class="product-card__desc" x-text="product.description"></span>
+          <span class="product-card__price" x-text="`Цена: ${product.price}`"
+            >
+          </span>
+          <span
+            class="product-card__price--discount"
+            x-text="`Цена со скидкой: ${product.discount_price}`"
+            >
+          </span>
+          <span class="product-card__quantity" x-text="`В наличии: ${product.quantity}`"
+            >
+          </span>
+        </article>
+      </li>
+    </template>
   </ul>
 </section>
-<script>
+<!-- <script>
   import "./product-card";
-</script>
+</script> -->

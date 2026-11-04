@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "shop astro php",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -13,6 +13,9 @@
     "images": "node image-to-webp"
   },
   "dependencies": {
+    "@astrojs/alpinejs": "^1.0.0",
+    "@types/alpinejs": "^3.17.0",
+    "alpinejs": "^3.17.5",
     "astro": "^7.4.4",
     "mysql2": "^3.24.6",
     "sass": "^1.107.0"
