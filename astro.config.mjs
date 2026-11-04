@@ -4,6 +4,8 @@ import { fileURLToPath } from "node:url";
 
 import alpinejs from "@astrojs/alpinejs";
 
+import preact from "@astrojs/preact";
+
 // https://astro.build/config
 export default defineConfig({
   site: "http://kirilltest1984online.ru",
@@ -19,5 +21,5 @@ export default defineConfig({
     },
   },
 
-  integrations: [alpinejs()],
+  integrations: [alpinejs(), preact()],
 });

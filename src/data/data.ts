@@ -5,8 +5,8 @@ export const pages = [
     url: '/',
   },
   {
-    title: 'О нас',
-    url: '/about',
+    title: 'Товары на preact',
+    url: '/products',
   },
   {
     title: 'Добро пожаловать',
