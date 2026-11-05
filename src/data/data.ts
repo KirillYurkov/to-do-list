@@ -9,7 +9,11 @@ export const pages = [
     url: '/products',
   },
   {
-    title: 'Добро пожаловать',
+    title: 'Preact',
+    url: '/preact',
+  },
+  {
+    title: 'Astro docs',
     url: '/welcome',
-  }
+  },
 ];
