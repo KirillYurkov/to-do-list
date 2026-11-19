@@ -1,53 +1,50 @@
-# name: Deploy Site shop astro php to shop.kirilltest1984online
+name: Deploy Todo App to GitHub Pages
 
-# on:
-#   push:
-#     branches:
-#       - main
-#   workflow_dispatch:
-#   repository_dispatch:
-#     types: [db_updated]
-    
-# jobs:
-#   build-and-deploy:
-#     runs-on: ubuntu-latest
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
 
-#     steps:
-#       - name: Checkout Repository
-#         uses: actions/checkout@v4
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: "24"
-#           cache: "npm"
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
-#       - name: Install Dependencies
-#         run: npm install --legacy-peer-deps
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-#       - name: Clean images folder before build
-#         run: rm -rf dist/images
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
 
-#       - name: Build Astro Project
-#         run: npx astro build
-#         env:
-#           NODE_ENV: production
-#           DB_HOST: ${{ secrets.DB_HOST }}
-#           DB_PORT: ${{ secrets.DB_PORT }}
-#           DB_USER: ${{ secrets.DB_USER }}
-#           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-#           DB_NAME: ${{ secrets.DB_NAME }}
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps
 
-#       - name: Sync Files via FTP to Sprinthost
-#         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-#         with:
-#           server: kirilltest1984online.ru
-#           username: ${{ secrets.FTP_USERNAME }}
-#           password: ${{ secrets.FTP_PASSWORD }}
-#           local-dir: dist/
-#           server-dir: domains/kirilltest1984online.ru/public_html/shop/
-#           timeout: 600000
-#           state-name: .ftp-deploy-domain-sync.json
-#           exclude: |
-#             **/panel/**
-#             panel/**
+      - name: Build Astro Project
+        run: npx astro build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

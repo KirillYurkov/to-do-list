@@ -8,8 +8,6 @@ import preact from "@astrojs/preact";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "http://kirilltest1984online.ru",
-
   vite: {
     css: {
       preprocessorOptions: {
@@ -22,4 +20,6 @@ export default defineConfig({
   },
 
   integrations: [alpinejs(), preact()],
+  site: 'https://github.io',
+  base: '/to-do-list',
 });
