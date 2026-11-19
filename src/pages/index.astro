@@ -1,9 +1,10 @@
 ---
-import Products from "@/components/Products/Products.astro";
 import Layout from "@/layouts/Layout.astro";
+import TodoApp from '@/components/TodoApp';
 ---
 
-<Layout title="Main | Shop astro php" desc="Главная страница сайта ">
-  <h1>Main</h1>
-  <Products />
+<Layout title="Todo list" desc="Todo list">
+
+  <TodoApp client:load/>
+
 </Layout>

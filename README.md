@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Astro Starter Kit: Basics
 
 ```sh
@@ -44,3 +45,7 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+=======
+# to-do-list
+Пет проект на Astro.js и библиотеке preact для отработки навыков работы с react/preact библиотекой
+>>>>>>> 150c43a6c309cb6b3f4a13805b9777b546ff754d
