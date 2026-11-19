@@ -7,7 +7,7 @@ const NewTaskForm = (props) => {
   const [value, setValue] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!value.trim().length === 0) { return; }
+    if (value.trim().length === 0) { return; }
     onAddTask(value);
     setValue('');
   }
