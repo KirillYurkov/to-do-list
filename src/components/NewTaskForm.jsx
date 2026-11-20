@@ -25,7 +25,7 @@ const NewTaskForm = (props) => {
         <Button
           className="btn btn--add"
           type="submit"
-          label="New task"
+          label="Добавить"
           {...rest}
         />
       </form>

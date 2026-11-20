@@ -78,8 +78,8 @@ const TodoApp = () => {
       </ul>
 
       <Button
-        className="btn btn--delete"
-        label="Del all task"
+        className="btn btn--delete btn--delete-all"
+        label="Удалить все задачи"
         onClick={handleDeleteAllTasks}
       />
     </div>

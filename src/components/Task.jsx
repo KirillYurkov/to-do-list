@@ -26,7 +26,7 @@ const Task = (props) => {
         className="btn btn--delete"
         type="button"
         onClick={() => onDeleteTask(id)}
-        label="Del task"
+        label="Удалить"
       />
     </li>
   );
